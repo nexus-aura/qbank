@@ -54,7 +54,7 @@ function updateZoom() {
         zoomLevel = Math.round(100 * ratio) / 100;
     }
 
-    if (zoomLevel < 1.60) {
+    if (zoomLevel < 1.50) {
         boxes.forEach(box => {
             box.style.webkitFilter = 'blur(2px)'; // For mobile browsers
             box.style.filter = 'blur(2px)';
