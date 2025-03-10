@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>GST Q bank</title>
+  
+  
+</head>
+
+<body>
+
+  <div class="box1">GST C UNIT QBANK</div>
+
+  <div class="box box0">Please use phone browser</div>
+
+  <div class="box box2"></div>
+
+  <div class="box box3"></div>
+
+  <div class="box box4"></div>
+
+  <div class="box box5"></div>
+
+  <div class="box box6"></div>
+
+  <div class="box box7"></div>
+
+  <div class="box box8"></div>
+
+  <div class="box box9"></div>
+  
+  <div class="box1" style="text-decoration:none; border-top:3px solid #FFA200;margin-top:20px; width:100%; padding-top:20px;">
+    The End
+  </div>
+
+</body>
+<script>
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+// Enhanced zoom detection for mobile
+function updateZoom() {
+    const boxes = document.querySelectorAll('.box');
+    let zoomLevel = 1;
+    
+    // Modern browsers (including mobile)
+    if (window.visualViewport) {
+        zoomLevel = window.visualViewport.scale;
+    } 
+    // Fallback for older browsers
+    else {
+        const ratio = window.outerWidth / window.innerWidth;
+        zoomLevel = Math.round(100 * ratio) / 100;
+    }
+
+    if (zoomLevel < 2.2) {
+        boxes.forEach(box => {
+            box.style.webkitFilter = 'blur(2px)'; // For mobile browsers
+            box.style.filter = 'blur(2px)';
+        });
+    } else {
+        boxes.forEach(box => {
+            box.style.webkitFilter = 'none';
+            box.style.filter = 'none';
+        });
+    }
+}
+
+// Mobile-friendly event listeners
+window.addEventListener('resize', () => {
+    setTimeout(updateZoom, 100); // Delay for mobile zoom completion
+});
+
+if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', updateZoom);
+}
+
+// Initial check
+updateZoom();
+
+// Add touch event listener for mobile
+document.addEventListener('touchstart', updateZoom);
+
+// Print prevention
+window.addEventListener('beforeprint', (e) => {
+    e.preventDefault();
+    alert('Printing disabled!');
+});
+
+// Add periodic check for mobile zoom changes
+setInterval(updateZoom, 500);
+
+// Add CSS vendor prefixes in style
+
+
+</script>
+</html>
